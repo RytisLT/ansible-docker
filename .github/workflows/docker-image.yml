@@ -16,3 +16,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag rytislt/ansible:latest --tag rytislt/ansible:2.9 --tag rytislt/ansible:2.9.6
+    - name: Login to Docker Hub
+      run: docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+    - name: Push image to Docker Hub
+      run: docker push rytislt/ansible -a
+    
